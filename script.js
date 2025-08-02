@@ -26,6 +26,21 @@ function playRound(playerSelection, computerSelection) {
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+function getPlayerSelection(roundNumber) {
+    const validChoices = ['rock', 'paper', 'scissors'];
+    while (true) {
+        let input = prompt(`Round ${roundNumber} of 5: Choose your weapon! (Rock, Paper, or Scissors)`);
+        if (input === null) {
+            return null; // User cancelled
+        }
+        input = input.trim().toLowerCase();
+        if (validChoices.includes(input)) {
+            return input;
+        } else {
+            alert("Invalid input! Please enter Rock, Paper, or Scissors.");
+        }
+    }
+}
 // Function to start the game
 function startGame() {
     const playerSelection = prompt("Enter Rock, Paper, or Scissors: ");
