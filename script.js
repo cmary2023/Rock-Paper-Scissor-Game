@@ -54,30 +54,29 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
 
-    // Display the welcome message and instructions
     console.log("Welcome, traveler, to the Ancient Tournament of Rock, Paper, Scissors!");
     console.log("Prove your worth in 5 rounds against the legendary Computer Master.");
     console.log("Prepare yourself for battle! Choose wisely between Rock, Paper, or Scissors.");
     console.log("The first to win 3 rounds will be declared the champion!");
     console.log("------------------------------------------------------------------");
 
-    // Loop through 5 rounds of the game
     for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt(`Round ${i + 1} of 5: Choose your weapon! (Rock, Paper, or Scissors)`);
+        let playerSelection = getPlayerSelection(i + 1);
 
-        // Check for cancel action
         if (playerSelection === null) {
             console.log("Game cancelled. The Computer Master claims victory by default!");
             return;
         }
-        // Validate player input
+
         const computerSelection = computerPlay();
         const result = playRound(playerSelection, computerSelection);
-
         const player = capitalize(playerSelection);
         const computer = capitalize(computerSelection);
-        // Display the results of the round
-        if (result === 'win') {
+
+        if (result === 'invalid') {
+            console.log(`Invalid input detected in Round ${i + 1}. This round is forfeited.`);
+            continue; // Skip the round
+        } else if (result === 'win') {
             playerScore++;
             console.log(`You Win Round ${i + 1}! ${player} beats ${computer}.`);
         } else if (result === 'lose') {
@@ -90,7 +89,7 @@ function game() {
         console.log(`Current Score: Player ${playerScore} - ${computerScore} Computer`);
         console.log("------------------------------------------------------------------");
     }
-    // After 5 rounds, determine the overall winner
+
     console.log("The tournament has concluded!");
     if (playerScore > computerScore) {
         console.log(`*** You are the Champion! Final Score: ${playerScore} to ${computerScore} ***`);
@@ -100,5 +99,4 @@ function game() {
         console.log(`*** It's a Tie! Final Score: ${playerScore} to ${computerScore} ***`);
     }
 }
-
 game();
