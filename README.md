@@ -1,42 +1,37 @@
 # Rock, Paper, Scissors - Ancient Tournament :rock: ✂️ 📃
 
-Welcome to the **Ancient Tournament of Rock, Paper, Scissors** — a simple yet fun browser-based game where you challenge the legendary Computer Master in a best-of-5 battle!
-## Description
-
-This project is a classic Rock, Paper, Scissors game implemented in JavaScript. The game runs in the browser console and uses `prompt()` for user input. It features input validation, score tracking, and announces the winner after five exciting rounds.
+A simple 5-round Rock, Paper, Scissors game written in vanilla JavaScript. Play directly in the browser console using prompts and alerts. No HTML or DOM manipulation required.
 
 ---
 
-## 🎮 How to Play 
+## 🎮 How to Play
 
-1. When prompted, type your choice: **Rock**, **Paper**, or **Scissors** (case-insensitive).
-2. The computer will randomly pick its choice.
-3. The winner of each round is displayed in the console along with the current score.
-4. After 5 rounds, the overall winner is declared.
-5. You can cancel anytime by pressing “Cancel” in the input prompt.
-
----
-
-## ✨Features
-
-- Randomized computer moves.
-- Case-insensitive input with validation.
-- Score tracking across 5 rounds.
-- Detailed console messages for rounds and final result.
-- Graceful exit if the player cancels the game.
+1. Open any modern web browser (Chrome, Firefox, Edge, etc.)
+2. Press:
+   - `Ctrl + Shift + J` (Windows/Linux)
+   - `Cmd + Option + J` (Mac)
+3. Go to the **Console** tab.
+4. Paste the entire JavaScript code from `game.js` into the console.
+5. Press `Enter` – the game starts automatically!
 
 ---
 
-## 🔧 Installation
+## 🧠 Game Rules
 
-No installation needed! This is a browser-based JavaScript game.
+- Rock beats Scissors  
+- Paper beats Rock  
+- Scissors beats Paper  
+- Same choices result in a Tie
+
+The game lasts **5 rounds**, and the player with the most wins at the end is the champion. First to 3 wins may end the game early.
 
 ---
 
-## 💻 Usage
+## 🛠 Features
 
-1. Open your favorite web browser.
-2. Open the developer console (usually with `F12`, `Ctrl+Shift+I`, or `Cmd+Option+I`).
-3. Copy and paste the complete game code into the console.
-4. Press Enter to start playing.
-5. Follow the on-screen prompts and enjoy the game!
+- 🔁 Plays up to 5 rounds
+- 🧠 Smart input validation (case-insensitive, trimmed, only valid choices)
+- 🖥️ Fully playable via `prompt()` and `alert()` dialogs
+- 🎲 Random computer choices
+- 📊 Score tracking and console output
+- 🎭 Themed text and console narrative for added fun
