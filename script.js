@@ -2,7 +2,12 @@
 function computerPlay() {
     const computerChoices = ['Rock', 'Paper', 'Scissors'];
     const randomIndex = Math.floor(Math.random() * computerChoices.length);
-    return computerChoices[randomIndex];// Randomly selects Rock, Paper, or Scissors
+    return computerChoices[randomIndex]; // Randomly selects Rock, Paper, or Scissors
+}
+
+// Function to capitalize the first letter of a string
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 // Function to play a single round of Rock, Paper, Scissors
@@ -22,44 +27,51 @@ function playRound(playerSelection, computerSelection) {
         return `You lose! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}.`;
     }
 }
-// Function to capitalize the first letter of a string
-function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
-function getPlayerSelection(roundNumber) {
-    const validChoices = ['rock', 'paper', 'scissors'];
-    while (true) {
-        let input = prompt(`Round ${roundNumber} of 5: Choose your weapon! (Rock, Paper, or Scissors)`);
-        if (input === null) {
-            return null; // User cancelled
-        }
-        input = input.trim().toLowerCase();
-        if (validChoices.includes(input)) {
-            return input;
-        } else {
-            alert("Invalid input! Please enter Rock, Paper, or Scissors.");
-        }
-    }
-}
-// Function to start the game
-function startGame() {
-    const playerSelection = prompt("Enter Rock, Paper, or Scissors: ");
-    if (!playerSelection) {
-        alert("Game cancelled.");
+
+// Main game function
+function game() {
+    console.log("Welcome to Rock, Paper, Scissors!");
+    let rounds = parseInt(prompt("How many rounds would you like to play?"), 10);
+    if (isNaN(rounds) || rounds <= 0) {
+        console.log("Invalid number of rounds. Exiting game.");
         return;
     }
-    const computerSelection = computerPlay();
-    const result = playRound(playerSelection, computerSelection);
-    alert(result);
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 1; i <= rounds; i++) {
+        console.log(`Round ${i}:`);
+        const playerSelection = prompt("Enter your choice (Rock, Paper, or Scissors):");
+        if (!playerSelection || !['rock', 'paper', 'scissors'].includes(playerSelection.toLowerCase())) {
+            console.log("Invalid choice. Skipping this round.");
+            continue;
+        }
+
+        const computerSelection = computerPlay();
+        console.log(`Computer chose: ${computerSelection}`);
+
+        const result = playRound(playerSelection, computerSelection);
+        console.log(result);
+
+        if (result.startsWith("You win")) {
+            playerScore++;
+        } else if (result.startsWith("You lose")) {
+            computerScore++;
+        }
+
+        console.log(`Score: Player ${playerScore} - Computer ${computerScore}`);
+    }
+
+    console.log("Game Over!");
+    if (playerScore > computerScore) {
+        console.log("Congratulations! You won the game!");
+    } else if (playerScore < computerScore) {
+        console.log("Sorry, you lost the game. Better luck next time!");
+    } else {
+        console.log("It's a tie overall!");
+    }
 }
 
-// Function to play the game and display the result
-function playGame(playerSelection) {
-    const computerSelection = computerPlay();
-    const result = playRound(playerSelection, computerSelection);
-    document.getElementById('result').textContent = result;
-}
-
-document.getElementById('rock').addEventListener('click', () => playGame('rock'));
-document.getElementById('paper').addEventListener('click', () => playGame('paper'));
-document.getElementById('scissors').addEventListener('click', () => playGame('scissors'));
+// Start the game
+game();
