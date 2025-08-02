@@ -4,3 +4,47 @@ function computerPlay() {
     const randomIndex = Math.floor(Math.random() * computerChoices.length);
     return computerChoices[randomIndex];// Randomly selects Rock, Paper, or Scissors
 }
+
+// Function to play a single round of Rock, Paper, Scissors
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+
+    if (playerSelection === computerSelection) {
+        return "It's a tie!";
+    } else if (
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
+    ) {
+        return `You win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}.`;
+    } else {
+        return `You lose! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}.`;
+    }
+}
+// Function to capitalize the first letter of a string
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+// Function to start the game
+function startGame() {
+    const playerSelection = prompt("Enter Rock, Paper, or Scissors: ");
+    if (!playerSelection) {
+        alert("Game cancelled.");
+        return;
+    }
+    const computerSelection = computerPlay();
+    const result = playRound(playerSelection, computerSelection);
+    alert(result);
+}
+
+// Function to play the game and display the result
+function playGame(playerSelection) {
+    const computerSelection = computerPlay();
+    const result = playRound(playerSelection, computerSelection);
+    document.getElementById('result').textContent = result;
+}
+
+document.getElementById('rock').addEventListener('click', () => playGame('rock'));
+document.getElementById('paper').addEventListener('click', () => playGame('paper'));
+document.getElementById('scissors').addEventListener('click', () => playGame('scissors'));
