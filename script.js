@@ -127,3 +127,4 @@ function game() {
 
     }, 3000); // 2-second delay
 }
+game();
