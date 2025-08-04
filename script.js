@@ -1,4 +1,3 @@
-
 // Generate a random choice for the computer
 function computerPlay() {
     const choices = ['Rock', 'Paper', 'Scissors'];
@@ -67,64 +66,62 @@ function game() {
     console.log("🔥 Prepare for battle and keep your eyes on this console!");
     console.log("");
     
-      let playerScore = 0;
+    let playerScore = 0;
     let computerScore = 0;
 
-    // Start game after short delay to let user read instructions
-    setTimeout(() => {
-        const totalRounds = 5;
+    const totalRounds = 5;
 
-        for (let i = 0; i < totalRounds; i++) {
-            console.log(`🛡️ Round ${i + 1} of ${totalRounds}`);
-            console.log("--------------------------------------------------");
+    for (let i = 0; i < totalRounds; i++) {
+        console.log(`🛡️ Round ${i + 1} of ${totalRounds}`);
+        console.log("--------------------------------------------------");
 
-            let playerSelection = getPlayerSelection(i + 1);
+        let playerSelection = getPlayerSelection(i + 1);
 
-            if (playerSelection === null) {
-                console.log("❌ Game cancelled. The Computer Master claims victory by default!");
-                return;
-            }
-
-            const computerSelection = computerPlay();
-            const result = playRound(playerSelection, computerSelection);
-            const player = capitalize(playerSelection);
-            const computer = capitalize(computerSelection);
-
-            if (result === 'invalid') {
-                console.log(`⚠️ Invalid input detected. This round is forfeited.`);
-                continue;
-            } else if (result === 'win') {
-                playerScore++;
-                console.log(`✅ You Win! ${player} beats ${computer}.`);
-            } else if (result === 'lose') {
-                computerScore++;
-                console.log(`❌ You Lose! ${computer} beats ${player}.`);
-            } else {
-                console.log(`🤝 It's a Tie! You both chose ${player}.`);
-            }
-
-            console.log(`📊 Current Score: Player ${playerScore} - ${computerScore} Computer`);
-            console.log("--------------------------------------------------");
-
-            // Early win condition
-            if (playerScore === 3 || computerScore === 3) {
-                console.log("🏁 A champion has emerged before all 5 rounds!");
-                break;
-            }
+        if (playerSelection === null) {
+            console.log("❌ Game cancelled. The Computer Master claims victory by default!");
+            return;
         }
 
-        // Final Result
-        console.log("============================================================");
-        console.log("🏆 The tournament has concluded!");
-        if (playerScore > computerScore) {
-            console.log(`🎉 You are the Champion! Final Score: ${playerScore} to ${computerScore}`);
-        } else if (computerScore > playerScore) {
-            console.log(`💀 The Computer Master wins! Final Score: ${playerScore} to ${computerScore}`);
+        const computerSelection = computerPlay();
+        const result = playRound(playerSelection, computerSelection);
+        const player = capitalize(playerSelection);
+        const computer = capitalize(computerSelection);
+
+        if (result === 'invalid') {
+            console.log(`⚠️ Invalid input detected. This round is forfeited.`);
+            continue;
+        } else if (result === 'win') {
+            playerScore++;
+            console.log(`✅ You Win! ${player} beats ${computer}.`);
+        } else if (result === 'lose') {
+            computerScore++;
+            console.log(`❌ You Lose! ${computer} beats ${player}.`);
         } else {
-            console.log(`🤷‍♂️ It's a Tie! Final Score: ${playerScore} to ${computerScore}`);
+            console.log(`🤝 It's a Tie! You both chose ${player}.`);
         }
-        console.log("============================================================");
 
-    }, 3000); // 2-second delay
+        console.log(`📊 Current Score: Player ${playerScore} - ${computerScore} Computer`);
+        console.log("--------------------------------------------------");
+
+        // Early win condition
+        if (playerScore === 3 || computerScore === 3) {
+            console.log("🏁 A champion has emerged before all 5 rounds!");
+            break;
+        }
+    }
+
+    // Final Result
+    console.log("============================================================");
+    console.log("🏆 The tournament has concluded!");
+    if (playerScore > computerScore) {
+        console.log(`🎉 You are the Champion! Final Score: ${playerScore} to ${computerScore}`);
+    } else if (computerScore > playerScore) {
+        console.log(`💀 The Computer Master wins! Final Score: ${playerScore} to ${computerScore}`);
+    } else {
+        console.log(`🤷‍♂️ It's a Tie! Final Score: ${playerScore} to ${computerScore}`);
+    }
+    console.log("============================================================");
 }
+
+// Call the function to start the game when the page loads
 game();
