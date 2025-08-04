@@ -53,7 +53,6 @@ function game() {
         "Good luck!"
     );
   
-    console.clear();
     console.log("============================================================");
     console.log("🎮 Welcome to the Ancient Tournament of Rock, Paper, Scissors!");
     console.log("============================================================");
@@ -76,7 +75,6 @@ function game() {
         const totalRounds = 5;
 
         for (let i = 0; i < totalRounds; i++) {
-            console.clear();
             console.log(`🛡️ Round ${i + 1} of ${totalRounds}`);
             console.log("--------------------------------------------------");
 
