@@ -46,6 +46,7 @@ function getPlayerSelection(roundNumber) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
+    alert("Welcome to Rock, Paper, Scissors!\nOpen your browser's console to see instructions and results.\n(Press F12 or right-click → Inspect → Console tab)");
 
     console.clear();
     console.log("============================================================");
