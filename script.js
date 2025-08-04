@@ -1,3 +1,4 @@
+
 // Generate a random choice for the computer
 function computerPlay() {
     const choices = ['Rock', 'Paper', 'Scissors'];
@@ -44,10 +45,14 @@ function getPlayerSelection(roundNumber) {
 
 // Function to play the game
 function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    alert("Welcome to Rock, Paper, Scissors!\nOpen your browser's console to see instructions and results.\n(Press F12 or right-click → Inspect → Console tab)");
-
+    alert(
+        "🎮 Welcome to Rock, Paper, Scissors!\n\n" +
+        "👉 The game consists of 5 rounds.\n" +
+        "👉 You will be prompted to type Rock, Paper, or Scissors.\n" +
+        "👉 Open the browser's console (F12 → Console tab) to see the results.\n\n" +
+        "Good luck!"
+    );
+  
     console.clear();
     console.log("============================================================");
     console.log("🎮 Welcome to the Ancient Tournament of Rock, Paper, Scissors!");
@@ -62,6 +67,9 @@ function game() {
     console.log("============================================================");
     console.log("🔥 Prepare for battle and keep your eyes on this console!");
     console.log("");
+    
+      let playerScore = 0;
+    let computerScore = 0;
 
     // Start game after short delay to let user read instructions
     setTimeout(() => {
@@ -119,5 +127,5 @@ function game() {
         }
         console.log("============================================================");
 
-    }, 2000); // 2-second delay
+    }, 3000); // 2-second delay
 }
